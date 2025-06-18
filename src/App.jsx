@@ -107,12 +107,12 @@ const App = () => {
       // Upload to Cloudinary with product name as public_id (will overwrite if exists)
       const newImageUrl = await uploadToCloudinary(file, product.portfolioName);
       
-      // Update local state
-      setProducts(prev => prev.map(p => 
-        p.portfolioId === productId 
-          ? { ...p, imageUrl: newImageUrl, hasCustomImage: true }
-          : p
-      ));
+      // // Update local state
+      // setProducts(prev => prev.map(p => 
+      //   p.portfolioId === productId 
+      //     ? { ...p, imageUrl: newImageUrl, hasCustomImage: true }
+      //     : p
+      // ));
 
       setMessage({ text: `Image updated for ${product.portfolioName}`, type: 'success' });
     } catch (error) {
