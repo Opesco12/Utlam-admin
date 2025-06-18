@@ -57,9 +57,12 @@ const App = () => {
   };
 
   const getImageUrl = async (productName) => {
-    const cloudinaryUrl = `https://res.cloudinary.com/${CLOUDINARY_CONFIG.cloudName}/image/upload/v1750117184/${toKebabCase(productName)}.webp`;
-    const defaultUrl = `https://res.cloudinary.com/${CLOUDINARY_CONFIG.cloudName}/image/upload/v1750117184/utlam-default.webp`;
+    const cloudinaryUrl = `https://res.cloudinary.com/${CLOUDINARY_CONFIG.cloudName}/image/upload/${toKebabCase(productName)}.png`;
+    const defaultUrl = `https://res.cloudinary.com/${CLOUDINARY_CONFIG.cloudName}/image/upload/utlam-default.png`;
     
+    // https://res.cloudinary.com/dauvznlvw/image/upload/v1750287970/utlam-default.png
+    // https://res.cloudinary.com/dauvznlvw/image/upload/v1750288169/utlam-fixed-income-plan.png
+
     const exists = await checkImageExists(cloudinaryUrl);
     return exists === true ? cloudinaryUrl : defaultUrl;
   };
