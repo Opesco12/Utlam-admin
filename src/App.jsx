@@ -74,6 +74,7 @@ const App = () => {
     formData.append('public_id', publicId);
 
     try {
+      console.log("Trying to upload")
       const response = await fetch(
         `https://api.cloudinary.com/v1_1/${CLOUDINARY_CONFIG.cloudName}/upload`,
         {
