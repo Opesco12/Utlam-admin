@@ -48,7 +48,7 @@ const App = () => {
   // Check if Cloudinary image exists
   const checkImageExists = async (imageUrl) => {
     try {
-      const response = await fetch(imageUrl, { method: 'HEAD' });
+      const response = await fetch(imageUrl, { method: 'get' });
       console.log("response for: ", imageUrl , ": ", response);
       return response.ok;
     } catch {
@@ -70,7 +70,7 @@ const App = () => {
     const formData = new FormData();
     formData.append('file', file);
     formData.append('upload_preset', CLOUDINARY_CONFIG.uploadPreset);
-    formData.append('public_id', publicId);
+    // formData.append('public_id', publicId);
 
     try {
       console.log("Trying to upload")
