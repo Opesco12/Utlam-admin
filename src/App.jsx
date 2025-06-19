@@ -11,7 +11,7 @@ const App = () => {
   const API_BASE = 'https://xfundclientapi.utlam.com:1008/api/v1';
   const CLOUDINARY_CONFIG = {
     cloudName: 'dauvznlvw',
-    uploadPreset: 'utlam_product_images'
+    uploadPreset: 'product_images'
   };
 
   function toKebabCase(str) {
@@ -59,9 +59,6 @@ const App = () => {
   const getImageUrl = async (productName) => {
     const cloudinaryUrl = `https://res.cloudinary.com/${CLOUDINARY_CONFIG.cloudName}/image/upload/${toKebabCase(productName)}.png`;
     const defaultUrl = `https://res.cloudinary.com/${CLOUDINARY_CONFIG.cloudName}/image/upload/utlam-default.png`;
-    
-    // https://res.cloudinary.com/dauvznlvw/image/upload/v1750287970/utlam-default.png
-    // https://res.cloudinary.com/dauvznlvw/image/upload/v1750288169/utlam-fixed-income-plan.png
 
     const exists = await checkImageExists(cloudinaryUrl);
     return exists === true ? cloudinaryUrl : defaultUrl;
@@ -73,7 +70,6 @@ const App = () => {
     const formData = new FormData();
     formData.append('file', file);
     formData.append('upload_preset', CLOUDINARY_CONFIG.uploadPreset);
-    formData.append("folder", 'products')
     formData.append('public_id', publicId);
 
     try {
